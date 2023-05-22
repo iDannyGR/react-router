@@ -27,11 +27,11 @@ const linkUrl:URL[] = [
 const Menu = (): React.ReactElement => (
   <nav>
     <ul className="flex items-center justify-center shadow w-full h-14">
-      {linkUrl.map((url) => (
+      {/* {linkUrl.map((url) => (
         <li key={url.id} className="ml-5 font-semibold hover:text-blue-500">
           <Link to={url.url}> {url.name} </Link>
         </li>
-      ))}
+      ))} */}
       {linkUrl.map((url) => (
         <li key={url.id} className="ml-5 font-semibold">
           <NavLink
