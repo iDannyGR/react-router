@@ -1,24 +1,24 @@
 import React from 'react';
-import { Post } from '@/models/Post';
-import { } from '@/assets/postData';
 import { useParams } from 'react-router-dom';
-import { blogdata } from '@/assets/postData'
-import { Post } from '@/models/Post'
+import { useNavigate } from 'react-router-dom';
+import { blogdata } from '@/assets/postData';
 
-interface slug {
-    slug: Post['slug']
-}
+const Post = (): React.ReactElement => {
 
-const Post = ():React.ReactElement =>{ 
-const { slug } = useParams();
-const dta = blogdata.find()
+  const { post } = useParams();
+  const navigate = useNavigate();
+  const dta = blogdata.find((e) => e.slug == post);
+  if (!dta) {return  <p>loading....</p> }
+
 return(
-    <section className=''>
-        <h1>{post.title}</h1>
-        <h3>{post.author}</h3>
-        <p>{post.content}</p>
+    <section className="w-full mt-4 flex flex-col items-center space-y-3">
+      <h1 className='font-bold text-3xl'>{dta.title}</h1>
+      <h3 className='font-semibold text-lg text-gray-600'>{dta.author}</h3>
+      <p className='text-lg'>{dta.content}</p>
+      <button 
+      className='w-24 h-10 rounded-lg bg-blue-800 text-white'
+      onClick={()=> navigate(-1)}
+      >regresar</button>
     </section>
-    )
-  }
-export default Post
-
+)};
+export default Post;
