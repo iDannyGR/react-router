@@ -22,3 +22,6 @@ return(
     </section>
 )};
 export default Post;
+
+//redirect in button logout
+//  navigate('/', { replace: true });

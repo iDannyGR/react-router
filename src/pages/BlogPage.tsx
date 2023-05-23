@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import BlogLink from '@/components/BlogLink';
 import { blogdata } from '@/assets/postData'
 
@@ -11,8 +12,12 @@ const BlogPage = () => {
         <BlogLink post={article} key={article.id} />
       ))}
       </ul>
+      <Outlet />
     </section>
   );
 }
 
 export default BlogPage
+
+//Outlet use to create routes into other routes
+//depend location of component rendering in the page

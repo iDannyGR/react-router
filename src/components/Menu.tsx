@@ -1,12 +1,12 @@
 import React from 'react';
-import {Link, NavLink} from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
  type URL = {
   id:number,
   url:string,
   name:string
  };
 
-const linkUrl:URL[] = [
+const linkUrl: URL[] = [
   {
     id: 0,
     url: '/',
@@ -16,17 +16,27 @@ const linkUrl:URL[] = [
     id: 1,
     url: '/blog',
     name: 'blog'
-  }, 
+  },
   {
-  id:2,
-  url:'/profile',
-  name:'My Profile'
+    id: 2,
+    url: '/profile',
+    name: 'My Profile'
+  },
+  {
+    id: 3,
+    url: '/login',
+    name: 'Login'
+  },
+  {
+    id: 4,
+    url: '/logout',
+    name: 'LogOut'
   }
 ];
 
 const Menu = (): React.ReactElement => (
   <nav>
-    <ul className="flex items-center justify-center shadow w-full h-14">
+    <ul className="absolute flex items-center justify-center shadow w-full h-14">
       {/* {linkUrl.map((url) => (
         <li key={url.id} className="ml-5 font-semibold hover:text-blue-500">
           <Link to={url.url}> {url.name} </Link>
