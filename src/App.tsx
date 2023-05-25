@@ -8,23 +8,26 @@ import Menu from '@/components/Menu';
 import Post from "@/pages/Post";
 import LoginPage from "@/pages/LoginPage";
 import LogOutPage from "@/pages/LogOutPage";
+import { AuthProvider } from '@/context/auth'
 import './index.css';
 
 const App = ():React.ReactElement => {
   return (
     <>
       <HashRouter>
-      <Menu />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<BlogPage />} >
-             <Route path=":post" element={<Post />} />
-          </Route>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/logout" element={<LogOutPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="*" element={<Error404 />} />
-        </Routes>
+        <AuthProvider>
+          <Menu />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<BlogPage />}>
+              <Route path=":post" element={<Post />} />
+            </Route>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/logout" element={<LogOutPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="*" element={<Error404 />} />
+          </Routes>
+        </AuthProvider>
       </HashRouter>
     </>
   );
