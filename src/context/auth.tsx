@@ -1,6 +1,6 @@
 import React from 'react';
 import type { PropsWithChildren } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 type loginData ={
   username:string | null,
@@ -12,6 +12,11 @@ interface Auth {
   logout: () => void;
 }
 
+interface ProtectedRouteProps {
+  children: React.ReactNode;
+}
+
+
 const AuthContext = React.createContext({});
 
 function AuthProvider({ children }: PropsWithChildren) {
@@ -21,7 +26,6 @@ function AuthProvider({ children }: PropsWithChildren) {
   const login = (username:string, password:string) => {
     setUser({ ...user, username, password });
     navigate('/profile');
-    console.log(user);
   };
 
   const  logout = () => {
@@ -39,4 +43,13 @@ function useAuth() {
   return authContext;
 }
 
-export { AuthProvider, useAuth };
+function ProtectedRoute(props: ProtectedRouteProps): React.ReactElement {
+  const { user } = useAuth();
+
+  if (!user?.username) {
+    return <Navigate to="/" />;
+  }
+  return <>{props.children}</>;
+}
+
+export { AuthProvider, useAuth, ProtectedRoute };

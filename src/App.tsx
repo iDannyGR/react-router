@@ -7,8 +7,7 @@ import Error404 from '@/pages/Error404';
 import Menu from '@/components/Menu';
 import Post from "@/pages/Post";
 import LoginPage from "@/pages/LoginPage";
-import LogOutPage from "@/pages/LogOutPage";
-import { AuthProvider } from '@/context/auth'
+import { AuthProvider, ProtectedRoute } from '@/context/auth';
 import './index.css';
 
 const App = ():React.ReactElement => {
@@ -23,8 +22,14 @@ const App = ():React.ReactElement => {
               <Route path=":post" element={<Post />} />
             </Route>
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/logout" element={<LogOutPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              }
+            />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </AuthProvider>
