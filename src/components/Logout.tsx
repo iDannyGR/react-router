@@ -1,18 +1,17 @@
 import React from 'react'
-
+import { useAuth } from '@/context/auth' 
 const Logout = () => {
-
+    const { logout } = useAuth()
     const useLogout = (e)=>{
         e.preventDefault();
-        console.log('hola mundo')
+        logout();
     }
 
   return (
     <form onSubmit={useLogout}>
-        <label htmlFor="">
-            LogOut
-        </label>
-        <button type='submit'>
+        <button 
+        type='submit'
+        className='absolute right-10 w-14 shadow-xl font-bold text-red-600'>
             Exit
         </button>
     </form>

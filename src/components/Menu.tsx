@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink} from 'react-router-dom';
+import Logout from './Logout';
+
  type URL = {
   id:number,
   url:string,
@@ -26,11 +28,6 @@ const linkUrl: URL[] = [
     id: 3,
     url: '/login',
     name: 'Login'
-  },
-  {
-    id: 4,
-    url: '/logout',
-    name: 'LogOut'
   }
 ];
 
@@ -53,6 +50,7 @@ const Menu = (): React.ReactElement => (
         </li>
       ))}
     </ul>
+      <Logout />
   </nav>
 );
 

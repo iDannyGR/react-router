@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import type { PropsWithChildren } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,10 +16,10 @@ const AuthContext = React.createContext({});
 
 function AuthProvider({ children }: PropsWithChildren) {
   const navigate = useNavigate();
-  const [user, setUser] = useState<loginData>({ username: null, password: null });
+  const [user, setUser] = React.useState<loginData>({ username: null, password: null });
 
   const login = (username:string, password:string) => {
-    setUser({ ...user, username: username, password });
+    setUser({ ...user, username, password });
     navigate('/profile');
     console.log(user);
   };
@@ -35,7 +35,7 @@ function AuthProvider({ children }: PropsWithChildren) {
 }
 
 function useAuth() {
-  const authContext = useContext(AuthContext) as Auth;
+  const authContext = React.useContext(AuthContext) as Auth;
   return authContext;
 }
 
