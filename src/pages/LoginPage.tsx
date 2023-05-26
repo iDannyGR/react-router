@@ -6,7 +6,7 @@ import { Navigate } from 'react-router-dom';
 const LoginPage = ():React.ReactElement => {
     
   const { user } = useAuth();
-  if(!user?.username) {return <Navigate to={"/"}/>};
+  if(user?.username) {return <Navigate to={"/"}/>};
   
   return (
       <section className='w-full h-[100vh] flex flex-col items-center justify-center'>

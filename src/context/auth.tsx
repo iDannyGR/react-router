@@ -4,7 +4,8 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
 type loginData ={
   username:string | null,
-  password:string | null
+  password:string | null,
+  admin:boolean
 }
 interface Auth {
   user: loginData | null;
@@ -16,6 +17,7 @@ interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
+const adminList:string[] = ['Irisval', 'idany','dannete'];
 
 const AuthContext = React.createContext({});
 
@@ -24,7 +26,8 @@ function AuthProvider({ children }: PropsWithChildren) {
   const [user, setUser] = React.useState<loginData>({ username: null, password: null });
 
   const login = (username:string, password:string) => {
-    setUser({ ...user, username, password });
+   const isAdmin = adminList.find(admin => admin===username);
+    setUser({ ...user, username, password, isAdmin });
     navigate('/profile');
   };
 
