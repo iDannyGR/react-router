@@ -5,7 +5,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 type loginData ={
   username:string | null,
   password:string | null,
-  admin:boolean
+  admin?:boolean
 }
 interface Auth {
   user: loginData | null;
@@ -23,11 +23,12 @@ const AuthContext = React.createContext({});
 
 function AuthProvider({ children }: PropsWithChildren) {
   const navigate = useNavigate();
-  const [user, setUser] = React.useState<loginData>({ username: null, password: null });
+  const [user, setUser] = React.useState<loginData>({ username: null, password: null, admin:false });
 
   const login = (username:string, password:string) => {
    const isAdmin = adminList.find(admin => admin===username);
-    setUser({ ...user, username, password, isAdmin });
+   const isAdminUser = isAdmin !== undefined;
+    setUser({ ...user, username, password, admin: isAdminUser });
     navigate('/profile');
   };
 

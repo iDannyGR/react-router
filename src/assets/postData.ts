@@ -6,7 +6,7 @@ export const blogdata: PostDta[] = [
     title: '¿Que es React?',
     slug: 'que-es-react',
     content: 'React es el mejor Framework de JavaScript, que lindo React',
-    author: 'Andrés Rodríguez'
+    author: 'idany'
   },
   {
     id: 1,
