@@ -17,7 +17,7 @@ interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
-const adminList:string[] = ['Irisval', 'idany','dannete'];
+const adminList: string[] = ['Irisval', 'idany', 'dannete', 'Andrés Rodríguez'];
 
 const AuthContext = React.createContext({});
 

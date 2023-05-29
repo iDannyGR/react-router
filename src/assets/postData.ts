@@ -13,20 +13,20 @@ export const blogdata: PostDta[] = [
     title: '¿Que es Vue?',
     slug: 'que-es-vue',
     content: 'Vue es el mejor Framework de JavaScript, que lindo Vue',
-    author: 'Andrés Rodríguez'
+    author: 'freddier'
   },
   {
     id: 2,
     title: '¿Que es Angular?',
     slug: 'que-es-angular',
     content: 'Angular esta bien, que lindo React XD',
-    author: 'Andrés Rodríguez'
+    author: 'JuanDC'
   },
   {
     id: 3,
     title: '¿Que es Svelte?',
     slug: 'que-es-svelte',
     content: 'Svelte es el mejor Framework de JavaScript, que lindo Svelte',
-    author: 'Andrés Rodríguez'
+    author: 'soffi'
   }
 ];
