@@ -8,6 +8,7 @@ import Menu from '@/components/Menu';
 import Post from "@/pages/Post";
 import LoginPage from "@/pages/LoginPage";
 import { AuthProvider, ProtectedRoute } from '@/context/auth';
+import { PostProvider } from '@/context/post';
 import './index.css';
 
 const App = ():React.ReactElement => {
@@ -15,6 +16,7 @@ const App = ():React.ReactElement => {
     <>
       <HashRouter>
         <AuthProvider>
+          <PostProvider>
           <Menu />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -32,6 +34,7 @@ const App = ():React.ReactElement => {
             />
             <Route path="*" element={<Error404 />} />
           </Routes>
+          </PostProvider>
         </AuthProvider>
       </HashRouter>
     </>

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import BlogLink from '@/components/BlogLink';
-import { blogdata } from '@/assets/postData'
-
+import { usePost } from '@/context/post';
 const BlogPage = () => {
+  
+  const { post } = usePost();
+  console.log(post)
   return (
     <section className="w-full h-[100vh] flex flex-col">
       <h1 className='text-4xl mt-16 text-center'>Post Recientes</h1>

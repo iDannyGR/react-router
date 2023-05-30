@@ -19,6 +19,8 @@ interface ProtectedRouteProps {
 
 const adminList: string[] = ['Irisval', 'idany', 'dannete', 'Andrés Rodríguez'];
 
+
+//start function to shared the context
 const AuthContext = React.createContext({});
 
 function AuthProvider({ children }: PropsWithChildren) {
@@ -26,9 +28,9 @@ function AuthProvider({ children }: PropsWithChildren) {
   const [user, setUser] = React.useState<loginData>({ username: null, password: null, admin:false });
 
   const login = (username:string, password:string) => {
-   const isAdmin = adminList.find(admin => admin===username);
-   const isAdminUser = isAdmin !== undefined;
-    setUser({ ...user, username, password, admin: isAdminUser });
+   const isAdmin = adminList.includes(username);
+   
+    setUser({ ...user, username, password, admin: isAdmin });
     navigate('/profile');
   };
 
@@ -46,6 +48,7 @@ function useAuth() {
   const authContext = React.useContext(AuthContext) as Auth;
   return authContext;
 }
+//end to shared context and providers
 
 function ProtectedRoute(props: ProtectedRouteProps): React.ReactElement {
   const { user } = useAuth();
