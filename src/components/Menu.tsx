@@ -39,7 +39,6 @@ const linkUrl: URL[] = [
 
 const Menu = (): React.ReactElement => {
     const { user }= useAuth()
-    console.log(user);
   return (
   <nav>
     <ul className="absolute flex items-center justify-center shadow w-full h-14">

@@ -5,12 +5,11 @@ import { usePost } from '@/context/post';
 const BlogPage = () => {
   
   const { post } = usePost();
-  console.log(post)
   return (
     <section className="w-full h-[100vh] flex flex-col">
       <h1 className='text-4xl mt-16 text-center'>Post Recientes</h1>
       <ul className='m-6'>
-      {blogdata.map((article) => (
+      {post.map((article) => (
         <BlogLink post={article} key={article.id} />
       ))}
       </ul>

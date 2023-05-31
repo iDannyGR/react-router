@@ -25,13 +25,13 @@ function PostProvider({ children }: PropsWithChildren) {
       setPost(result);
     } 
 
-  const dtaPost = { post, createPost, deletePost };
+  const dtaPost:Post = { post, createPost, deletePost };
 
   return <PostContext.Provider value={dtaPost}>{children}</PostContext.Provider>;
 }
 
 function usePost() {
-  const postContext = React.useContext(PostContext);
+  const postContext = React.useContext(PostContext) as Post;
   return postContext;
 }
 

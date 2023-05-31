@@ -50,6 +50,15 @@ function useAuth() {
 }
 //end to shared context and providers
 
+/**
+ * This is a TypeScript React function that checks if a user is authenticated and returns a navigation
+ * component if they are not.
+ * @param {ProtectedRouteProps} props - The props parameter is an object that contains the properties
+ * passed to the ProtectedRoute component. These properties can be accessed using dot notation, for
+ * example, props.children to access the child components passed to the ProtectedRoute component.
+ * @returns The `ProtectedRoute` component is being returned, which either renders the children passed
+ * to it or navigates to the home page if the user is not authenticated.
+ */
 function ProtectedRoute(props: ProtectedRouteProps): React.ReactElement {
   const { user } = useAuth();
 
