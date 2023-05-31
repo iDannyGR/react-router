@@ -16,8 +16,8 @@ function PostProvider({ children }: PropsWithChildren) {
   
     const [post, setPost] = React.useState<PostDta[]>(blogdata);
         
-    const createPost = ({id, title, slug, content, author}:PostDta) => {
-        setPost([...post,{id, title, slug, content, author}]);
+    const createPost = ({title, slug, content, author}:PostDta) => {
+        setPost([...post,{title, slug, content, author}]);
         console.log(post);
 };
     const deletePost = (slug) =>{
