@@ -5,7 +5,7 @@ import { blogdata } from '@/assets/postData'
 
 interface Post {
   post: PostDta[],
-  createPost: ({id, title, slug, content, author}:PostDta) => void,
+  createPost: ({title, slug, content, author}:PostDta) => void,
   deletePost: (slug:PostDta['slug']) => void
 }
 
