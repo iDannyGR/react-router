@@ -6,7 +6,7 @@ import { usePost } from '@/context/post';
 
 export const usePostdta = () => {
   const { post } = useParams();
-  const { deletePost } = usePost();
+  const { deletePost, createPost } = usePost();
   const navigate = useNavigate();
   const { user } = useAuth();
   const dta = blogdata.find((e) => e.slug === post);

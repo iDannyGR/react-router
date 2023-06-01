@@ -30,6 +30,11 @@ return (
         </button>
       )}
     </div>
+      <button 
+      className=" w-20 bg-blue-900 text-white p-2 rounded-md shadow-lg shadow-zinc-500"
+      onClick={()=> navigate('/addpost')}>
+        add Post
+      </button>
   </section>
 );};
 export default Post;
