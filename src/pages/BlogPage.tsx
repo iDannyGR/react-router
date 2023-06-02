@@ -6,6 +6,7 @@ import AddPost from '@/components/AddPost';
 const BlogPage = () => {
   
   const { post } = usePost();
+console.log(post);
   
   return (
     <section className="w-full h-[100vh] flex flex-col items-center p-4">

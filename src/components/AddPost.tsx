@@ -6,11 +6,11 @@ const AddPost = ():React.ReactElement => {
      const { createPost } = usePost();
        const [title, setTitle] = React.useState('');
        const [content, setContent] = React.useState('');
+       const { user } = useAuth();
       
 
      const handleCreatePost = (e) =>{
       e.preventDefault();
-       const { user } = useAuth();
        const author = user?.username;
       const slug = title.replaceAll(' ', '-');
         createPost({ slug, title, content, author });

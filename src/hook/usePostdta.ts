@@ -5,11 +5,12 @@ import { useAuth } from '@/context/auth';
 import { usePost } from '@/context/post';
 
 export const usePostdta = () => {
+
   const { post } = useParams();
-  const { deletePost, createPost } = usePost();
-  const navigate = useNavigate();
   const { user } = useAuth();
-  const dta = blogdata.find((e) => e.slug === post);
+  const { deletePost } = usePost();
+  const navigate = useNavigate();
+  const dta = post.find((e) => e.slug === post);
   const ifdelete = user?.admin || dta?.author === user?.username;
  
   const deleteHandler = (slug: string) => {

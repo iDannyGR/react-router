@@ -6,12 +6,11 @@ const Post = (): React.ReactElement => {
 
 const {  dta, ifdelete, deleteHandler } = usePostdta()
 const navigate = useNavigate();
+console.log(dta)
  
   if (!dta) {
    return <p>loading....</p>;
  }
-
-
 return (
   <section className="border w-full p-4 mt-10 flex flex-col justify-center space-y-3 rounded-xl shadow-lg md:w-[900px] md:h-[400px]">
     <h1 className="font-bold text-3xl">{dta.title}</h1>
