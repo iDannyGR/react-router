@@ -2,6 +2,7 @@ import { PostDta } from '@/models/PostDta';
 
 export const blogdata: PostDta[] = [
   {
+    id:'1',
     title: '¿Que es React?',
     slug: 'que-es-react',
     content:
@@ -9,6 +10,7 @@ export const blogdata: PostDta[] = [
     author: 'idany'
   },
   {
+    id:'2',
     title: '¿Que es Vue?',
     slug: 'que-es-vue',
     content:
@@ -16,6 +18,7 @@ export const blogdata: PostDta[] = [
     author: 'freddier'
   },
   {
+    id:'3',
     title: '¿Que es Angular?',
     slug: 'que-es-angular',
     content:
@@ -23,6 +26,7 @@ export const blogdata: PostDta[] = [
     author: 'JuanDC'
   },
   {
+    id:'4',
     title: '¿Que es Svelte?',
     slug: 'que-es-svelte',
     content:

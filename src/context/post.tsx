@@ -5,7 +5,7 @@ import { blogdata } from '@/assets/postData'
 
 interface Post {
   post: PostDta[],
-  createPost: ({title, slug, content, author}:PostDta) => void,
+  createPost: ({id, title, slug, content, author}:PostDta) => void,
   deletePost: (slug:PostDta['slug']) => void
 }
 
@@ -16,9 +16,8 @@ function PostProvider({ children }: PropsWithChildren) {
   
     const [post, setPost] = React.useState<PostDta[]>(blogdata);
         
-    const createPost = ({title, slug, content, author}:PostDta) => {
-        setPost([...post,{title, slug, content, author}]);
-        console.log(post);
+    const createPost = ({id, title, slug, content, author}:PostDta) => {
+        setPost([...post,{id, title, slug, content, author}]);
 };
     const deletePost = (slug) =>{
       const result = post.filter(item => item.slug != slug); 

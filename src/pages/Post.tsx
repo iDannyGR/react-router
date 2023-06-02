@@ -6,7 +6,6 @@ const Post = (): React.ReactElement => {
 
 const {  dta, ifdelete, deleteHandler } = usePostdta()
 const navigate = useNavigate();
-console.log(dta)
  
   if (!dta) {
    return <p>loading....</p>;

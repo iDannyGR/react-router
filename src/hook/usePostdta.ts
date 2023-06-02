@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { blogdata } from '@/assets/postData';
 import { useAuth } from '@/context/auth';
 import { usePost } from '@/context/post';
 
@@ -8,13 +7,13 @@ export const usePostdta = () => {
 
   const { post } = useParams();
   const { user } = useAuth();
-  const { deletePost } = usePost();
+  const Post = usePost();
   const navigate = useNavigate();
-  const dta = post.find((e) => e.slug === post);
+  const dta = Post.post.find((e) => e.slug === post);
   const ifdelete = user?.admin || dta?.author === user?.username;
  
   const deleteHandler = (slug: string) => {
-    deletePost(slug);
+    Post.deletePost(slug);
     navigate('/blog');
   };
 

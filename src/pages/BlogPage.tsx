@@ -2,22 +2,23 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import BlogLink from '@/components/BlogLink';
 import { usePost } from '@/context/post';
-import AddPost from '@/components/AddPost';
+import { useAuth } from '@/context/auth';
+import AddPost from '@/components/AddPost/AddPost';
 const BlogPage = () => {
   
   const { post } = usePost();
-console.log(post);
-  
+  const { user } = useAuth();
+
   return (
     <section className="w-full h-[100vh] flex flex-col items-center p-4">
       <h1 className='text-4xl mt-36 text-center'>Post Recientes</h1>
       <ul className='m-6 flex items-center justify-center'>
       {post.map((article) => (
-        <BlogLink post={article} key={article.slug} />
+        <BlogLink post={article} key={article.id} />
       ))}
       </ul>
       <Outlet />
-      <AddPost />
+      {user?.username && <AddPost />}
     </section>
   );
 }
