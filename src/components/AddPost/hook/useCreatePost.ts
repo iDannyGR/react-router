@@ -1,10 +1,11 @@
-import { PostDta } from '@/models/PostDta';
+import React from 'react';
+import {toast} from 'react-toastify';
 import { usePost } from '@/context/post';
 import { useAuth } from '@/context/auth';
 import { generarId } from '@/components/AddPost/hook/useRamdomID';
 import { useNavigate } from 'react-router-dom';
 
-export const useCreatePost = (post: PostDta) => {
+export const useCreatePost = () => {
    let create:boolean= false;
    
    const { createPost } = usePost();
@@ -13,30 +14,32 @@ export const useCreatePost = (post: PostDta) => {
        const { user } = useAuth();
        const navigate = useNavigate();
       
-       const handleCreatePost = (e) =>{
+       const handleCreatePost = (e: React.FormEvent<HTMLFormElement>) => {
          e.preventDefault();
          const id = generarId(8);
          const author = user?.username;
          const slug = title.replaceAll(' ', '-');
-        createPost({id, slug, title, content, author });
-     }
-          if (
-            post.id !== undefined &&
-            post.slug !== undefined &&
-            post.title !== undefined &&
-            post.content !== undefined &&
-            post.author !== undefined &&
-            post.id !== null &&
-            post.slug !== null &&
-            post.title !== null &&
-            post.content !== null &&
-            post.author !== null
-          ) {
-            createPost(post);
-             create = true;
-          } else {
-            console.log('Error: Los campos no pueden estar vacíos');
-          }
+         if (
+           title !== undefined &&
+           slug !== undefined &&
+           content !== undefined &&
+           author !== undefined &&
+           slug !== null &&
+           title !== null &&
+           content !== null &&
+           author !== null
+         ) {
+           createPost({ id, slug, title, content, author });
+           navigate('/home');
+           create = true;
+           toast.success('data create')
+         }
+         else{
+          toast.warn('bad data')
+         }
+       };
+         
+    return { setTitle, setContent, create, handleCreatePost };        
+  
         }
 
-}

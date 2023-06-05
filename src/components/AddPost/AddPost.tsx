@@ -1,7 +1,13 @@
 import React from 'react';
+import { useCreatePost } from './hook/useCreatePost';
+ import { ToastContainer } from 'react-toastify';
+ import 'react-toastify/dist/ReactToastify.css';
 
 const AddPost = ():React.ReactElement => {
-    
+
+ const { setTitle, setContent, create, handleCreatePost  } = useCreatePost();
+
+
   return (
     <form 
     className="border w-full p-4 mt-10 space-y-9 flex flex-col justify-center rounded-xl shadow-lg md:w-[500px] md:h-[400px] "
@@ -10,7 +16,7 @@ const AddPost = ():React.ReactElement => {
       <label className="">
         Titulo:
         <input
-          value={title}
+          value={''}
           type="text"
           onChange={(e) => setTitle(e.target.value)}
           placeholder="titulo del post"
@@ -20,7 +26,7 @@ const AddPost = ():React.ReactElement => {
       <label className="flex items-center">
         Contenido:
         <textarea
-          value={content}
+          value={''}
           onChange={(e) => setContent(e.target.value)}
           placeholder="titulo del post"
           rows={4}
@@ -41,6 +47,7 @@ const AddPost = ():React.ReactElement => {
           salir
         </button>
       </div>
+      <ToastContainer />
     </form>
   );
 }
