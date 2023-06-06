@@ -5,8 +5,10 @@ import { blogdata } from '@/assets/postData'
 
 interface Post {
   post: PostDta[],
+  openModal: boolean,
   createPost: ({id, title, slug, content, author}:PostDta) => void,
   deletePost: (slug:PostDta['slug']) => void
+  setOpenModal: (isOpen:boolean) => void
 }
 
 //start post provider
@@ -15,7 +17,8 @@ const PostContext = React.createContext({});
 function PostProvider({ children }: PropsWithChildren) {
   
     const [post, setPost] = React.useState<PostDta[]>(blogdata);
-        
+    const [openModal, setOpenModal] = React.useState<boolean>(false);
+      
     const createPost = ({id, title, slug, content, author}:PostDta) => {
         setPost([...post,{id, title, slug, content, author}]);
 };
@@ -24,7 +27,7 @@ function PostProvider({ children }: PropsWithChildren) {
       setPost(result);
     } 
 
-  const dtaPost:Post = { post, createPost, deletePost };
+  const dtaPost:Post = { post, openModal, setOpenModal, createPost, deletePost };
 
   return <PostContext.Provider value={dtaPost}>{children}</PostContext.Provider>;
 }
