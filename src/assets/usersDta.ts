@@ -4,7 +4,7 @@ import { USER, roles } from '@/models/authUser';
 export const USERS: USER[] = [
   {
     username: 'idany',
-    password: 'admin123*',
+    password: 'admin',
     role: roles.ADMIN
   },
   {

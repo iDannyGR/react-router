@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { usePost } from '@/context/post';
 import { useAuth } from '@/context/auth';
 const Post = (): React.ReactElement => {
+  
 const { user } = useAuth();
 const {  dta, ifdelete, deleteHandler } = usePostdta()
 const navigate = useNavigate();

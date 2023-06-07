@@ -1,14 +1,11 @@
 import React from 'react';
 import type { PropsWithChildren } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { USERS } from '@/assets/usersDta';
+import { USER, roles } from '@/models/authUser';
 
-type loginData ={
-  username:string | null,
-  password:string | null,
-  admin?:boolean
-}
 interface Auth {
-  user: loginData | null;
+  user: USER | null;
   login: (username: string, password: string) => void;
   logout: () => void;
 }
@@ -17,27 +14,31 @@ interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
-const adminList: string[] = ['Irisval', 'idany', 'dannete', 'Andrés Rodríguez'];
-
-
 //start function to shared the context
 const AuthContext = React.createContext({});
 
 function AuthProvider({ children }: PropsWithChildren) {
   const navigate = useNavigate();
-  const [user, setUser] = React.useState<loginData>({ username: null, password: null, admin:false });
+  const [user, setUser] = React.useState<USER>({username:'', password: '', role:roles.USER});
 
-  const login = (username:string, password:string) => {
-   const isAdmin = adminList.includes(username);
-   
-    setUser({ ...user, username, password, admin: isAdmin });
-    navigate('/profile');
+  const login = (username: string, password: string) => {
+    
+    const validateUser = USERS.find((user) => user.username === username && user.password === password); 
+
+    if (validateUser) {
+      setUser(validateUser);
+      navigate('/profile');
+    } else {
+      setUser({ username, password, role: roles.USER });
+      navigate('/profile');
+    }
+  
   };
 
-  const  logout = () => {
-    setUser({username:null, password:null});
+  const logout = () => {
+    setUser({ username: '', password: '', role: roles.USER });
     navigate('/');
-  }
+  };
 
   const auth: Auth = { user, login, logout };
 

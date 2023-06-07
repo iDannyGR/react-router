@@ -25,7 +25,7 @@ const App = ():React.ReactElement => {
             </Route>
             <Route path="/login" element={<LoginPage />} />
             <Route
-              path="/profile"
+              path="/profile/:name"
               element={
                 <ProtectedRoute>
                   <ProfilePage />
