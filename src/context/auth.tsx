@@ -27,10 +27,10 @@ function AuthProvider({ children }: PropsWithChildren) {
 
     if (validateUser) {
       setUser(validateUser);
-      navigate('/profile');
+      navigate(`/profile/${user.username}`);
     } else {
       setUser({ username, password, role: roles.USER });
-      navigate('/profile');
+      navigate(`/profile/${user.username}`);
     }
   
   };

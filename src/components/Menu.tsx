@@ -10,35 +10,36 @@ import { useAuth } from '@/context/auth';
   private:boolean
  };
 
-const linkUrl: URL[] = [
-  {
-    id: 0,
-    url: '/',
-    name: 'home',
-    private: false
-  },
-  {
-    id: 1,
-    url: '/blog',
-    name: 'blog',
-    private: false
-  },
-  {
-    id: 2,
-    url: '/profile',
-    name: 'My Profile',
-    private: true
-  },
-  {
-    id: 3,
-    url: '/login',
-    name: 'Login',
-    private: false
-  }
-];
+
 
 const Menu = (): React.ReactElement => {
-    const { user }= useAuth()
+    const { user }= useAuth();
+    const linkUrl: URL[] = [
+      {
+        id: 0,
+        url: '/',
+        name: 'home',
+        private: false
+      },
+      {
+        id: 1,
+        url: '/blog',
+        name: 'blog',
+        private: false
+      },
+      {
+        id: 2,
+        url: `/profile/${user?.username}`,
+        name: 'My Profile',
+        private: false
+      },
+      {
+        id: 3,
+        url: '/login',
+        name: 'Login',
+        private: false
+      }
+    ];
   return (
   <nav>
     <ul className="absolute flex items-center justify-center shadow w-full h-14">

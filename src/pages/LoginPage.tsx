@@ -4,8 +4,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 
 const LoginPage = ():React.ReactElement => {
-    
-  const { user } = useAuth();
+     const { user } = useAuth();
   if(user?.username) {return <Navigate to={"/"}/>};
   
   return (

@@ -7,7 +7,7 @@ const ProfilePage = ():React.ReactElement => {
  
   const { user } = useAuth();
   const { name } = useParams();
-  
+    if  (user?.username !== name) { return <p>Usuario no Existe</p>;} 
     return (
     <section className="w-full h-[100vh] flex flex-col items-center  justify-center text-center">
       <div className="border border-blue-200 w-96 h-96 flex flex-col items-center justify-center space-y-8 rounded-xl shadow-inner shadow-blue-200">

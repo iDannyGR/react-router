@@ -7,7 +7,7 @@ import Error404 from '@/pages/Error404';
 import Menu from '@/components/Menu';
 import Post from "@/pages/Post";
 import LoginPage from "@/pages/LoginPage";
-import { AuthProvider, ProtectedRoute } from '@/context/auth';
+import { AuthProvider } from '@/context/auth';
 import { PostProvider } from '@/context/post';
 import './index.css';
 
@@ -27,9 +27,7 @@ const App = ():React.ReactElement => {
             <Route
               path="/profile/:name"
               element={
-                <ProtectedRoute>
                   <ProfilePage />
-                </ProtectedRoute>
               }
             />
             <Route path="*" element={<Error404 />} />
