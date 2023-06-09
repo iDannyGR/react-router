@@ -7,6 +7,7 @@ import { USER, roles } from '@/models/authUser';
 interface Auth {
   user: USER | null;
   login: (username: string, password: string) => void;
+  edit: (username: string) => void;
   logout: () => void;
 }
 
@@ -21,18 +22,27 @@ function AuthProvider({ children }: PropsWithChildren) {
   const navigate = useNavigate();
   const [user, setUser] = React.useState<USER>({username:'', password: '', role:roles.USER});
 
-  const login = (username: string, password: string) => {
-    
-    const validateUser = USERS.find((user) => user.username === username && user.password === password); 
+const login = (username: string, password: string) => {
+  const validateUser = USERS.find((user) => user.username === username && user.password === password);
 
-    if (validateUser) {
-      setUser(validateUser);
-      navigate(`/profile/${user.username}`);
-    } else {
-      setUser({ username, password, role: roles.USER });
-      navigate(`/profile/${user.username}`);
-    }
-  
+  if (validateUser) {
+    setUser(validateUser);
+  } else {
+    const newUser = {
+      username: username,
+      password: password,
+      role: roles.USER
+    };
+    setUser(newUser);
+  }
+
+  navigate(`/profile/${username}`);
+  console.log(user);
+};
+
+  const edit = (username :string) => {
+      setUser({...user, username });
+      navigate(`/profile/${username}`);
   };
 
   const logout = () => {
@@ -40,7 +50,7 @@ function AuthProvider({ children }: PropsWithChildren) {
     navigate('/');
   };
 
-  const auth: Auth = { user, login, logout };
+  const auth: Auth = { user, login, edit, logout };
 
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 }
