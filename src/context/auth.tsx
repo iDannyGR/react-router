@@ -37,7 +37,6 @@ const login = (username: string, password: string) => {
   }
 
   navigate(`/profile/${username}`);
-  console.log(user);
 };
 
   const edit = (username :string) => {

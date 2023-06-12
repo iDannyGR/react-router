@@ -1,5 +1,5 @@
 import React from 'react';
-import {toast} from 'react-toastify';
+import {toast} from 'react-toastify'; 
 import { usePost } from '@/context/post';
 import { useAuth } from '@/context/auth';
 import { generarId } from '@/components/AddPost/hook/useRamdomID';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCreatePost } from './hook/useCreatePost';
- import { ToastContainer } from 'react-toastify';
+ import { ToastContainer,  } from 'react-toastify';
  import 'react-toastify/dist/ReactToastify.css';
 import {usePost} from '@/context/post';
 
@@ -31,7 +31,7 @@ const { setOpenModal, openModal }=usePost();
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            placeholder="titulo del post"
+            placeholder="Descripcion"
             rows={4}
             cols={40}
             className="rounded-md p-2 bg-slate-50 ml-3 text-gray-800 shadow-md shadow-blue-200 focus:outline-blue-700"

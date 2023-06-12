@@ -3,16 +3,19 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/auth';
 import profile from '@/assets/profile-svgrepo-com.svg';
 import { USERS } from '@/assets/usersDta';
+import { toast, ToastContainer } from 'react-toastify';
 
 const ProfilePage = (): React.ReactElement => {
   const { user } = useAuth();
   const { name } = useParams();
   const navigate =  useNavigate();
+  
   if (!user || user.username !== name) {
     const userFromUsers = USERS.find((user) => user.username === name);
-
-    if (!userFromUsers) {
-      return <p>Usuario no Existe</p>;
+    
+    if (!userFromUsers) {  
+    toast.warn('usuario no existente', {position:'bottom-center'});
+     return <ToastContainer />;
     }
 
     return (
@@ -26,7 +29,12 @@ const ProfilePage = (): React.ReactElement => {
           <p className="rounded-md shadow shadow-blue-200 text-xl font-semibold text-blue-950 bg-slate-50 p-4">
             {userFromUsers.role}
           </p>
+          {user &&
+          <button className='rounded-2xl w-40 h-14 bg-blue-500 shadow-lg text-white hover:text-black'
+        onClick={ ()=> navigate('/editprofile') }>editar perfil</button>
+          }
         </div>
+        
       </section>
     );
   }
