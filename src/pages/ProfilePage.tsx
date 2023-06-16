@@ -9,19 +9,22 @@ const ProfilePage = (): React.ReactElement => {
   const { user } = useAuth();
   const { name } = useParams();
 
-  toast.warn('usuario no encontrado')
   
   let dta = { };
-      if (name && USERS.hasOwnProperty(name)) {
-        dta = USERS[name];
-      } else if (user && user.username === name) {
-        dta = user;
-      } else {
+
+  if (!user || user.username !== name ) {
+    
+    dta = USERS.find(user => user.username === name);
+
+  } else if (user && user.username === name) {
+    dta = user;
+  } else {
+        toast.warn('usuario no encontrado')
         return <ToastContainer />;
       }
   
     return (
-      <Profile props={ dta } />
+      <Profile props ={ dta } />
   );
 };
 
